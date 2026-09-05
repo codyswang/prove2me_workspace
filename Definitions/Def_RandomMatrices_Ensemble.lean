@@ -21,8 +21,8 @@ random variables on the probability space `(Ω, P)`, with `E (Z 0 1)^2 = 1` and 
 all absolute moments `E |Z 0 1|^k` and `E |Y 0|^k` finite (`k ≥ 1`). -/
 structure IsWignerArray {Ω : Type*} [MeasurableSpace Ω] (P : Measure Ω)
     (Z : ℕ → ℕ → Ω → ℝ) (Y : ℕ → Ω → ℝ) : Prop where
-  /-- Each off-diagonal entry is a random variable. -/
-  measurable_Z : ∀ i j, Measurable (Z i j)
+  /-- Each off-diagonal entry used by the matrix is a random variable. -/
+  measurable_Z : ∀ i j, i < j → Measurable (Z i j)
   /-- Each diagonal entry is a random variable. -/
   measurable_Y : ∀ i, Measurable (Y i)
   /-- The off-diagonal entries `{Z i j}_{i < j}` together with the diagonal entries
